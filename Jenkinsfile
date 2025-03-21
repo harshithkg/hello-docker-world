@@ -13,7 +13,8 @@ pipeline {
         stage('Checkout') {
             steps {
               
-                git 'https://github.com/harshithkg/hello-docker-world.git' 
+                git clone 'https://github.com/harshithkg/hello-docker-world.git' 
+    
             }
         }
 
@@ -22,7 +23,7 @@ pipeline {
                 script {
                    
                     sh """
-                    sudo docker build -t ${DOCKER_HUB_REPO}:${IMAGE_TAG} .
+                    docker build -t ${DOCKER_HUB_REPO}:${IMAGE_TAG} .
                     """
                 }
             }
@@ -45,7 +46,7 @@ pipeline {
                    
                     docker.withRegistry('', DOCKER_HUB_CREDENTIALS) {
                         sh """
-                        sudo docker push ${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                        docker push ${DOCKER_HUB_REPO}:${IMAGE_TAG}
                         """
                     }
                 }
@@ -57,7 +58,7 @@ pipeline {
                 script {
                 
                     sh """
-                    sudo docker run -d -p 8888:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                    docker run -d -p 8888:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
                     """
                 }
             }
