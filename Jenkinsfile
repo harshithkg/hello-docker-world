@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Define environment variables
-        DOCKER_HUB_REPO = "shubha16/my_tomcat" 
+        DOCKER_HUB_REPO = "harshithkg/tomcat" 
         DOCKER_HUB_CREDENTIALS = "docker-hub-credentials" 
         IMAGE_TAG = "latest" 
         WAR_FILE = "target/helloworld.war" 
@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
               
-                git 'https://github.com/shubhalokesh/hello-world-war.git' 
+                git 'https://github.com/harshithkg/hello-docker-world.git' 
             }
         }
 
@@ -57,7 +57,7 @@ pipeline {
                 script {
                 
                     sh """
-                    docker run -d -p 8081:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                    docker run -d -p 8888:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
                     """
                 }
             }
