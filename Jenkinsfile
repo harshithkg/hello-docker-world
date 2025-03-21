@@ -22,7 +22,7 @@ pipeline {
                 script {
                    
                     sh """
-                    docker build -t ${DOCKER_HUB_REPO}:${IMAGE_TAG} .
+                    sudo docker build -t ${DOCKER_HUB_REPO}:${IMAGE_TAG} .
                     """
                 }
             }
@@ -45,7 +45,7 @@ pipeline {
                    
                     docker.withRegistry('', DOCKER_HUB_CREDENTIALS) {
                         sh """
-                        docker push ${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                        sudo docker push ${DOCKER_HUB_REPO}:${IMAGE_TAG}
                         """
                     }
                 }
@@ -57,7 +57,7 @@ pipeline {
                 script {
                 
                     sh """
-                    docker run -d -p 8888:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                    sudo docker run -d -p 8888:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
                     """
                 }
             }
