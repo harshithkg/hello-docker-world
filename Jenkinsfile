@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
               
-                git clone 'https://github.com/harshithkg/hello-docker-world.git' 
+                git 'https://github.com/harshithkg/hello-docker-world.git' 
     
             }
         }
