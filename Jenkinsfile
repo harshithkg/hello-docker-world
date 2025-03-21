@@ -6,7 +6,6 @@ pipeline {
         DOCKER_HUB_REPO = "harshithkg/tomcat" 
         DOCKER_HUB_CREDENTIALS = "docker-hub-credentials" 
         IMAGE_TAG = "latest" 
-        WAR_FILE = "target/helloworld.war" 
     }
     
     stages {
